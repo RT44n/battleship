@@ -13,5 +13,8 @@ class Ship {
     if (this.hit === this.length) {
       this.sunk = true;
     }
+    return false;
   }
 }
+
+export default { Ship };
