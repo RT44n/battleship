@@ -1,4 +1,5 @@
 import Ship from "./ship";
+import randomTile from "./helpers";
 
 class Gameboard {
   constructor() {
@@ -19,7 +20,6 @@ class Gameboard {
   }
 
   shipPosition(index) {
-    // Corrected typo
     const currentShip = this.ships[index];
     console.log(currentShip);
     return currentShip.position;
@@ -53,6 +53,35 @@ class Gameboard {
     const status = this.ships.every((ship) => ship.isSunk());
     if (status === true) return true;
     return false;
+  }
+
+  randomAttack() {
+    const attackTiles = randomTile();
+    const x = attackTiles[0];
+    const y = attackTiles[1];
+
+    if (x < 0 || x >= this.size || y < 0 || y >= this.size) {
+      this.randomAttack();
+    }
+
+    const alreadyHit = this.allHits.some((hit) => hit.x === x && hit.y === y);
+    if (alreadyHit) {
+      this.randomAttack();
+    }
+
+    this.allHits.push({ x, y });
+
+    const hitShip = this.ships.find((ship) =>
+      ship.position.some((pos) => pos.x === x && pos.y === y)
+    );
+    console.log(hitShip);
+    if (hitShip) {
+      hitShip.takeHit();
+      this.board[x][y] = "hit";
+      return "Hit!";
+    }
+    this.board[x][y] = "miss";
+    return "Miss";
   }
 
   placeShip(name, length, alignment, x, y) {
