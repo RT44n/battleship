@@ -109,6 +109,34 @@ class Gameboard {
 
     return true;
   }
+
+  placeShipRandom() {
+    const shipNames = [
+      "Carrier",
+      "Battleship",
+      "Cruiser",
+      "Submarine",
+      "Destroyer",
+    ];
+    const shipLengths = [5, 4, 3, 3, 2];
+    const alignments = ["horizontal", "vertical"];
+
+    for (let i = 0; i < shipNames.length; i++) {
+      let placed = false;
+
+      while (!placed) {
+        const name = shipNames[i];
+        const length = shipLengths[i];
+        const alignment = alignments[Math.floor(Math.random() * 2)]; // Randomly choose horizontal or vertical
+        const x = Math.floor(Math.random() * this.size);
+        const y = Math.floor(Math.random() * this.size);
+
+        if (this.placeShip(name, length, alignment, x, y)) {
+          placed = true;
+        }
+      }
+    }
+  }
 }
 
 export default Gameboard;
