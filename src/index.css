@@ -1,0 +1,7 @@
+.playerBoardDislay{
+    display: flex;
+    width: 520px;
+    height: 520px;
+    flex-wrap: wrap;
+}
+

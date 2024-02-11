@@ -1,4 +1,4 @@
-import Gameboard from "./gameboard";
+import screenController from "./screenController";
+import "./index.css";
 
-const newBoard = new Gameboard();
-newBoard.placeShip("Submarine", 5, "horizontal", 4, 5);
+screenController();
