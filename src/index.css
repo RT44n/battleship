@@ -1,7 +1,38 @@
-.playerBoardDislay{
+.container {
     display: flex;
-    width: 520px;
-    height: 520px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center; 
 }
 
+.container > h1 {
+    margin: 20px 0; 
+}
+
+.gameContent {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px; 
+}
+
+.playerBoardDisplay {
+    display: grid; 
+    grid-template-columns: repeat(10, 1fr); 
+    grid-template-rows: repeat(10, 1fr); 
+    gap: 1px;
+    width: 520px;
+    height: 520px; 
+    border: 1px solid black; 
+}
+
+.playerDisplayTile {
+    width: calc(100% / 10); 
+    height: calc(100% / 10); 
+    background-color: lightblue;
+}
+
+.boardContainer {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+  }

@@ -15,7 +15,7 @@ class Player {
   }
 
   hasLost() {
-    this.playerBoard.allSunk();
+    return this.playerBoard.allSunk();
   }
 
   placeShip() {
@@ -23,7 +23,7 @@ class Player {
   }
 
   showBoard() {
-    this.playerBoard.checkBoard();
+    return this.playerBoard.checkBoard();
   }
 }
 
